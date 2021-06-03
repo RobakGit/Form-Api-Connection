@@ -1,15 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import { store } from './app/store';
-import { Provider } from 'react-redux';
+import { Provider } from 'react-redux'
+import { createStore, combineReducers } from 'redux'
+import { reducer as reduxFormReducer } from 'redux-form'
 import * as serviceWorker from './serviceWorker';
+
+const App = require('./App').default
+
+const reducer = combineReducers({
+  form: reduxFormReducer // mounted under "form"
+})
+
+const store = (window.devToolsExtension
+  ? window.devToolsExtension()(createStore)
+  : createStore)(reducer)
+
+const showResults = values =>
+  new Promise(resolve => {
+    setTimeout(() => {
+      // simulate server latency
+      console.log(`You submitted:\n\n${JSON.stringify(values, null, 2)}`)
+      resolve()
+    }, 500)
+  })
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <App onSubmit={showResults}/>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
