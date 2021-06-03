@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import { Provider } from 'react-redux'
-import { createStore, combineReducers } from 'redux'
-import { reducer as reduxFormReducer } from 'redux-form'
+import { Provider } from 'react-redux';
+import { createStore, combineReducers } from 'redux';
+import { reducer as reduxFormReducer } from 'redux-form';
+import axios from 'axios';
 import * as serviceWorker from './serviceWorker';
 
 const App = require('./App').default
@@ -18,11 +19,16 @@ const store = (window.devToolsExtension
 
 const showResults = values =>
   new Promise(resolve => {
-    setTimeout(() => {
       // simulate server latency
+      
+      axios.post('https://frosty-wood-6558.getsandbox.com/dishes', JSON.stringify(values, null, 2), {
+      headers: {
+      'content-type': 'application/json'
+      }
+      }).then((response) => {console.log(response);}).catch((error) => {console.log(error);});
+
       console.log(`You submitted:\n\n${JSON.stringify(values, null, 2)}`)
       resolve()
-    }, 500)
   })
 
 ReactDOM.render(
