@@ -19,15 +19,27 @@ const store = (window.devToolsExtension
 
 const showResults = values =>
   new Promise(resolve => {
-      // simulate server latency
       
+      if(values.slices_of_bread){
+        values.slices_of_bread = parseInt(values.slices_of_bread);
+      }
+      if(values.no_of_slices) {
+        values.no_of_slices = parseInt(values.no_of_slices);
+        values.diameter = parseFloat(values.diameter);
+      }
+
       axios.post('https://frosty-wood-6558.getsandbox.com/dishes', JSON.stringify(values, null, 2), {
       headers: {
       'content-type': 'application/json'
       }
-      }).then((response) => {console.log(response);}).catch((error) => {console.log(error);});
+      })
+      .then((response) => {
+        alert(`Server data Response:\n${JSON.stringify(response.data, null, 2)}`);
+      })
+      .catch((error) => {
+        alert(error);
+      });
 
-      console.log(`You submitted:\n\n${JSON.stringify(values, null, 2)}`)
       resolve()
   })
 

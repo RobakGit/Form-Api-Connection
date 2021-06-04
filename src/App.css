@@ -2,38 +2,52 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background-color: #0C0D11;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-float infinite 3s ease-in-out;
-  }
+form {
+  background-color: #111217;
+  padding: 40px;
+  border-radius: 15px;
 }
 
-.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.elementContainer {
+  margin: 20px;
 }
 
-.App-link {
-  color: rgb(112, 76, 182);
+#subBtn {
+  margin-right: 20px;
 }
 
-@keyframes App-logo-float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
+label {
+  color: #7F86A6 !important;
+}
+
+input, select {
+  color:  #7F86A6 !important;
+}
+
+svg {
+  color: #7F86A6 !important;
+}
+
+.MuiOutlinedInput-notchedOutline {
+  border-color: #292C37 !important;
+}
+
+.MuiOutlinedInput-root.Mui-error .MuiOutlinedInput-notchedOutline {
+  border-color: red !important;
+}
+
+.MuiSlider-root {
+  color: #BC3756 !important;
+}
+
+#time::-webkit-calendar-picker-indicator {
+  filter: invert(0.8);
+}
+
+.MuiButton-contained.Mui-disabled {
+  color:  rgba(255, 255, 255, .5) !important;
 }
