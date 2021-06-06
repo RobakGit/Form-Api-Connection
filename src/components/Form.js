@@ -40,7 +40,7 @@ let Form = props => {
     props.change("spiciness_scale", newValue);
   };
 
-  if(!props.spicinessExist && props.typeValue === "soup"){props.change("spiciness_scale", 1)};
+  if(props.typeValue === "soup"){props.change("spiciness_scale", 1)};
 
   if(props.typeValue === "pizza"){
     props.change("spiciness_scale", undefined)
@@ -140,17 +140,9 @@ Form = reduxForm({
 const selector = formValueSelector('Form')
 Form = connect(
   state => {
-    // can select values individually
-    //const spicinessValue = selector(state, 'spiciness_scale')
-    //let spicinessExist = false;
-    //if(spicinessValue){spicinessExist = true;}
     const typeValue = selector(state, 'type')
-    let didi = [];
-    didi = didi.push(selector(state, 'dish'))
     return {
-      typeValue,
-      didi
-      //spicinessExist
+      typeValue
     }
   }
 )(Form)
