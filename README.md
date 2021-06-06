@@ -1,5 +1,8 @@
 <h2>Form-Api-Connection</h2>
 
+node: v14.17.0
+npm: 7.15.1
+
 To run the project:
 <ol>
 <li>Clone this repo</li>
